@@ -1,0 +1,3 @@
+export function ArticlesAdmin() {
+  // ... rest of the component code ...
+} 

@@ -1,0 +1,3 @@
+export function LoginPage() {
+  // ... rest of the component code ...
+} 

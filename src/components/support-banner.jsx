@@ -1,4 +1,5 @@
-import { Coffee, Heart } from "lucide-react"
+import { Coffee, Heart, Lock } from "lucide-react"
+import { Link } from "react-router"
 
 export function SupportBanner() {
   return (
@@ -17,6 +18,14 @@ export function SupportBanner() {
           <Coffee className="w-4 h-4" />
           Support my work
         </a>
+        <span className="text-muted-foreground mx-1">•</span>
+        <Link 
+          to="/admin/login" 
+          className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors"
+        >
+          <Lock className="w-4 h-4" />
+          Admin
+        </Link>
       </div>
     </div>
   )

@@ -5,6 +5,12 @@ import { Navbar } from "./components/navbar"
 import { Footer } from "./components/footer"
 import { NewsArticle } from "./pages/news-article"
 import { BlogPost } from "./pages/blog-post"
+import { ArticlePage } from "./pages/news/[id]"
+import { AdminLayout } from "./components/admin/AdminLayout"
+import { Dashboard } from "./pages/admin/dashboard"
+import { SchedulesAdmin } from "./pages/admin/schedules"
+import { ArticlesAdmin } from "./pages/admin/articles"
+import { LoginPage } from "./pages/admin/login"
 
 export const router = createBrowserRouter([
   {
@@ -17,13 +23,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/news/:id",
-    element: (
-      <div className="min-h-screen bg-background font-sans antialiased">
-        <Navbar />
-        <NewsArticle />
-        <Footer />
-      </div>
-    ),
+    element: <ArticlePage />,
   },
   {
     path: "/blog/:id",
@@ -34,5 +34,27 @@ export const router = createBrowserRouter([
         <Footer />
       </div>
     ),
+  },
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    children: [
+      {
+        path: "",
+        element: <Dashboard />,
+      },
+      {
+        path: "schedules",
+        element: <SchedulesAdmin />,
+      },
+      {
+        path: "articles",
+        element: <ArticlesAdmin />,
+      },
+    ],
+  },
+  {
+    path: "/admin/login",
+    element: <LoginPage />,
   },
 ]) 
