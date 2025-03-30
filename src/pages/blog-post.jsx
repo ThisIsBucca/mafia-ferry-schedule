@@ -1,9 +1,10 @@
-import { useParams } from "react-router"
+import { useParams, useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
 import { Calendar, Clock } from "lucide-react"
 
 export function BlogPost() {
   const { id } = useParams()
+  const navigate = useNavigate()
 
   // This would typically come from an API or database
   const post = {

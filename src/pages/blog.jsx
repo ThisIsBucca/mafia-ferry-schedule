@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { Calendar, Clock, ArrowRight, Mail, ChevronLeft, ChevronRight } from "lucide-react"
-import { Link } from "react-router"
+import { Link, useNavigate } from 'react-router-dom'
 
 export function Blog() {
   const [ref, inView] = useInView({
@@ -16,7 +16,7 @@ export function Blog() {
     excerpt: "We're excited to announce the launch of our new express ferry service, reducing travel time between Mafia Island and Nyamisati by 30%. This development marks a significant improvement in our transportation network.",
     author: "John Mwangi",
     readingTime: "5 min read",
-    image: "/images/blog/ferry-launch.jpg",
+    image: "/images/blog/blog2.jpg",
     link: "/blog/new-express-ferry-service",
   }
 
@@ -93,7 +93,7 @@ export function Blog() {
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center">
         <div className="absolute inset-0">
           <img
-            src="/images/blog/hero-bg.jpg"
+            src="/images/blog/blog1.jpg"
             alt="Mafia Island Transport"
             className="w-full h-full object-cover"
           />
@@ -133,9 +133,13 @@ export function Blog() {
             >
               <div className="relative rounded-2xl overflow-hidden group">
                 <img
-                  src={featuredPost.image}
+                  src={`${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/blog/${featuredPost.image}`}
                   alt={featuredPost.title}
                   className="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    e.target.src = '/placeholder-image.jpg'
+                    console.error('Failed to load image:', featuredPost.image)
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-background/50" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">

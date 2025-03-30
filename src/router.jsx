@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router"
+import { createBrowserRouter } from "react-router-dom"
 import { MainContent } from "./App"
 import { Blog } from "./pages/blog"
 import { Navbar } from "./components/navbar"
@@ -11,6 +11,7 @@ import { Dashboard } from "./pages/admin/dashboard"
 import { SchedulesAdmin } from "./pages/admin/schedules"
 import { ArticlesAdmin } from "./pages/admin/articles"
 import { LoginPage } from "./pages/admin/login"
+import { ProtectedRoute } from './components/ProtectedRoute'
 
 export const router = createBrowserRouter([
   {
@@ -36,8 +37,16 @@ export const router = createBrowserRouter([
     ),
   },
   {
+    path: "/admin/login",
+    element: <LoginPage />,
+  },
+  {
     path: "/admin",
-    element: <AdminLayout />,
+    element: (
+      <ProtectedRoute>
+        <AdminLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: "",
@@ -52,9 +61,5 @@ export const router = createBrowserRouter([
         element: <ArticlesAdmin />,
       },
     ],
-  },
-  {
-    path: "/admin/login",
-    element: <LoginPage />,
   },
 ]) 

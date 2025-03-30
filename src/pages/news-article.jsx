@@ -1,8 +1,8 @@
-import { useParams } from "react-router"
+import { useParams } from "react-router-dom"
 import { motion } from "framer-motion"
 import { Calendar, Clock, ArrowLeft } from "lucide-react"
 import { articles } from "../data/articles"
-import { Link } from "react-router"
+import { Link } from "react-router-dom"
 
 export function NewsArticle() {
   const { id } = useParams()

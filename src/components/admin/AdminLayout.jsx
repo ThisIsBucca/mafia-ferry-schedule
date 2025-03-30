@@ -1,9 +1,10 @@
-import { Navigate, Outlet } from "react-router"
-import { Link } from "react-router"
+import { Navigate, Outlet, Link, useLocation } from "react-router-dom"
 import { useAuth } from "../../contexts/AuthContext"
+import { supabase } from "../../lib/supabase"
 
 export function AdminLayout() {
   const { user, loading } = useAuth()
+  const location = useLocation()
 
   if (loading) return <div>Loading...</div>
   if (!user) return <Navigate to="/admin/login" replace />
@@ -17,13 +18,21 @@ export function AdminLayout() {
             <div className="flex gap-4">
               <Link 
                 to="/admin/schedules" 
-                className="text-sm text-muted-foreground hover:text-primary"
+                className={`text-sm ${
+                  location.pathname === '/admin/schedules'
+                    ? 'text-primary'
+                    : 'text-muted-foreground hover:text-primary'
+                }`}
               >
                 Schedules
               </Link>
               <Link 
                 to="/admin/articles" 
-                className="text-sm text-muted-foreground hover:text-primary"
+                className={`text-sm ${
+                  location.pathname === '/admin/articles'
+                    ? 'text-primary'
+                    : 'text-muted-foreground hover:text-primary'
+                }`}
               >
                 Articles
               </Link>
