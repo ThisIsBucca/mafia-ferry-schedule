@@ -4,9 +4,13 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react({
+    jsxRuntime: 'classic' // Add this line
+  })],
   server: {
-    historyApiFallback: true, // For dev server
+    headers: {
+      'Content-Type': 'text/javascript'
+    }
   },
   resolve: {
     alias: {
