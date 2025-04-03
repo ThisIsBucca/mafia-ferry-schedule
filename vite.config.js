@@ -8,7 +8,13 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    sourcemap: true
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+        format: 'es'
+      }
+    }
   },
   base: '/',
   server: {
@@ -20,5 +26,6 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+    extensions: ['.js', '.jsx', '.json']
   },
 }) 
