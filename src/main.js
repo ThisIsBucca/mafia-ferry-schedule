@@ -1,10 +1,10 @@
-import * as React from 'react'
-import ReactDOM from 'react-dom/client'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import App from './App'
+import * as React from './node_modules/react/index.js'
+import ReactDOM from './node_modules/react-dom/client.js'
+import { QueryClient, QueryClientProvider } from './node_modules/@tanstack/react-query/dist/index.js'
+import { ReactQueryDevtools } from './node_modules/@tanstack/react-query-devtools/dist/index.js'
+import App from './App.js'
 import './styles/globals.css'
-import { AuthProvider } from './contexts/AuthContext'
+import { AuthProvider } from './contexts/AuthContext.js'
 
 const queryClient = new QueryClient()
 
