@@ -8,13 +8,23 @@ import { AuthProvider } from './contexts/AuthContext'
 
 const queryClient = new QueryClient()
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <AuthProvider>
-      <QueryClientProvider client={queryClient}>
-        <App />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </AuthProvider>
-  </React.StrictMode>,
-) 
+// Initialize theme
+if (!localStorage.getItem("theme")) {
+  localStorage.setItem("theme", "dark");
+  document.documentElement.classList.add("dark");
+}
+
+// Render the app
+const root = document.getElementById('root')
+if (root) {
+  ReactDOM.createRoot(root).render(
+    React.createElement(React.StrictMode, null,
+      React.createElement(AuthProvider, null,
+        React.createElement(QueryClientProvider, { client: queryClient },
+          React.createElement(App),
+          React.createElement(ReactQueryDevtools, { initialIsOpen: false })
+        )
+      )
+    )
+  )
+} 
