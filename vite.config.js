@@ -13,7 +13,7 @@ export default defineConfig({
   base: '/',
   server: {
     headers: {
-      'Content-Type': 'text/javascript'
+      'Content-Type': 'application/javascript'
     }
   },
   resolve: {
