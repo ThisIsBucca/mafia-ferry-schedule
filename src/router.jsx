@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom"
+import { createHashRouter } from "react-router-dom"
 import { MainContent } from "./App"
 import { Blog } from "./pages/blog"
 import { Navbar } from "./components/navbar"
@@ -13,7 +13,7 @@ import { ArticlesAdmin } from "./pages/admin/articles"
 import { LoginPage } from "./pages/admin/login"
 import { ProtectedRoute } from './components/ProtectedRoute'
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: "/",
     element: <MainContent />,
