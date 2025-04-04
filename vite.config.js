@@ -26,5 +26,10 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
     extensions: ['.js', '.jsx', '.json']
+  },
+  server: {
+    headers: {
+      'Content-Security-Policy': "script-src 'self' 'unsafe-eval' 'unsafe-inline';"
+    }
   }
 }) 
