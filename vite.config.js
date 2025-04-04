@@ -8,31 +8,13 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    sourcemap: true,
-    rollupOptions: {
-      output: {
-        format: 'es',
-        entryFileNames: 'assets/[name].js',
-        chunkFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/[name].[ext]'
-      }
-    }
+    sourcemap: true
   },
   base: '/',
-  server: {
-    headers: {
-      'Content-Type': 'application/javascript'
-    }
-  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
     extensions: ['.js', '.jsx', '.json']
-  },
-  esbuild: {
-    loader: 'jsx',
-    include: /src\/.*\.jsx?$/,
-    exclude: []
   }
 }) 

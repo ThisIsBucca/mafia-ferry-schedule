@@ -4,25 +4,7 @@
   ],
   "headers": [
     {
-      "source": "/(.*).jsx",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript"
-        }
-      ]
-    },
-    {
-      "source": "/(.*).js",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript"
-        }
-      ]
-    },
-    {
-      "source": "/(.*).mjs",
+      "source": "/(.*).(js|jsx|mjs)$",
       "headers": [
         {
           "key": "Content-Type",

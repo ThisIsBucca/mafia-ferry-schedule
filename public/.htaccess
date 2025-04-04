@@ -1,3 +1,18 @@
 AddType application/javascript .jsx
 AddType application/javascript .js
-AddType application/javascript .mjs 
+AddType application/javascript .mjs
+
+# Enable CORS
+Header set Access-Control-Allow-Origin "*"
+
+# Cache control
+<FilesMatch "\.(js|jsx|mjs)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</FilesMatch>
+
+# Force HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] 
