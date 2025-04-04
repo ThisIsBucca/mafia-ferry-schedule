@@ -10,7 +10,7 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: true
   },
-  base: './',
+  base: '/',
   server: {
     headers: {
       'Content-Type': 'application/javascript'
