@@ -1,16 +1,20 @@
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+import { execSync } from 'child_process'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+import fs from 'fs'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 // Run the build command
-console.log('Building the project...');
-execSync('npm run build', { stdio: 'inherit' });
+console.log('Building the project...')
+execSync('vite build', { stdio: 'inherit' })
 
 // Copy the public/index.html to dist/index.html
-console.log('Copying index.html to dist directory...');
+console.log('Copying index.html to dist directory...')
 fs.copyFileSync(
-  path.join(__dirname, 'public', 'index.html'),
-  path.join(__dirname, 'dist', 'index.html')
-);
+  join(__dirname, 'public', 'index.html'),
+  join(__dirname, 'dist', 'index.html')
+)
 
-console.log('Build completed successfully!'); 
+console.log('Build completed successfully!') 
